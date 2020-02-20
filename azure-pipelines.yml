@@ -13,6 +13,10 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
+- script: dotnet build --configuration $(buildConfiguration)
+  displayName: 'dotnet build $(buildConfiguration)'
+
+
 - task: DotNetCoreCLI@2
   displayName: Build
   inputs:
@@ -20,7 +24,6 @@ steps:
     projects: '**/*.csproj'
     arguments: '--configuration Release' # Update this to match your need
 
-steps:
 # ...
 # do this after other tasks such as building
 - task: DotNetCoreCLI@2
